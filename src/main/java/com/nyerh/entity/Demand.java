@@ -15,8 +15,8 @@ public class Demand {
    public String Origin;
    public String Target;
    public String State;
-   public String Cur_time;
-   public String Track_num;
+   public String CurTime;
+   public String TrackNum;
    public Integer Between;
    public String Etc;
 }

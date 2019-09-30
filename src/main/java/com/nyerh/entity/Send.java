@@ -6,12 +6,11 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class Send {
-    private Integer s_id;
-    private String sender;
-    private String send_phone;
-    private String send_add;
-    private String receiver;
-    private String rec_phone;
-    private String rec_add;
-
+    private Integer sId;
+    private String Sender;
+    private String SendPhone;
+    private String SendAdd;
+    private String Receiver;
+    private String RecPhone;
+    private String RecAdd;
 }

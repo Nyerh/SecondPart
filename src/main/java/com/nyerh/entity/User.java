@@ -6,16 +6,16 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class User {
-    private Integer u_id;
-    private String username;
-    private String password;
-    private String id_card;
-    private String u_name;
-    private String phone;
-    private String sex;
-    private String address;
-    private Integer cur_rec;
-    private Integer all_rec;
-    private Integer all_order;
+    private Integer uId;
+    private String Username;
+    private String Password;
+    private String IdCard;
+    private String uName;
+    private String Phone;
+    private String Sex;
+    private String Address;
+    private Integer CurRec;
+    private Integer AllRec;
+    private Integer AllOrder;
 
 }
