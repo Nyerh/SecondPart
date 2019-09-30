@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Send {
     private Integer sId;
-    private String Sender;
-    private String SendPhone;
-    private String SendAdd;
-    private String Receiver;
-    private String RecPhone;
-    private String RecAdd;
+    private String sender;
+    private String sendPhone;
+    private String sendAdd;
+    private String receiver;
+    private String recPhone;
+    private String recAdd;
 }

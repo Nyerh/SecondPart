@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class Demand {
    public Integer gId;
-   public Integer OrderUId;
-   public Integer RecUId;
-   public Double Weight;
-   public Integer Num;
-   public Double Price;
-   public String Origin;
-   public String Target;
-   public String State;
-   public String CurTime;
-   public String TrackNum;
-   public Integer Between;
-   public String Etc;
+   public Integer orderUId;
+   public Integer recUId;
+   public Double weight;
+   public Integer num;
+   public Double price;
+   public String origin;
+   public String target;
+   public String state;
+   public String curTime;
+   public String trackNum;
+   public Integer between;
+   public String etc;
 }

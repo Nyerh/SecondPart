@@ -7,15 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
     private Integer uId;
-    private String Username;
-    private String Password;
-    private String IdCard;
+    private String username;
+    private String password;
+    private String idCard;
     private String uName;
-    private String Phone;
-    private String Sex;
-    private String Address;
-    private Integer CurRec;
-    private Integer AllRec;
-    private Integer AllOrder;
+    private String phone;
+    private String sex;
+    private String address;
+    private Integer curRec;
+    private Integer allRec;
+    private Integer allOrder;
+    private Integer detection;
 
 }
