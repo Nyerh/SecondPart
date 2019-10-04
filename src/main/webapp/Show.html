@@ -26,7 +26,8 @@
     <script type="text/javascript">
         var NowPage=1;
         $(function () {
-            $.ajax({
+            $.ajax
+            ({
                 url: "http://localhost:8080/SecondPart/DemandController/show",
                 type: "POST",
                 dataType: "json",
@@ -57,11 +58,14 @@
                         }
                         str = "<tr><td>" + gId + "</td><td>" + weight + "</td><td>" + num + "</td><td>" +price+
                             "</td><td>"+origin+"</td><td>"+target+"</td><td>"+curTime+"</td><td>"+state+
-                            "</td><td><a href='#'>查看详情</a></td></tr>";
+                            "</td><td><a href='Detail.html?id="+gId+"'>查看详情</a></td></tr>";
                         $("#tbd1").append(str);
                     }
                 }
             });
+            $.ajax({
+
+            })
         })
     </script>
 </head>

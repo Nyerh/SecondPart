@@ -14,7 +14,18 @@ public class DemandServImpl implements DemandService {
     @Resource
     IDemandMapper idm;
     @Override
-    public List<Demand> getList() {
+    public List<Demand> getList()
+    {
         return idm.getList();
+    }
+
+    @Override
+    public Demand getDetail(Integer gId) {
+        return idm.getDetail(gId);
+    }
+
+    @Override
+    public Integer getDemand(Integer gid, Integer uid) {
+        return idm.getDemand(gid, uid);
     }
 }

@@ -7,10 +7,23 @@
         <result property="curTime" column="cur_time"/>
     </resultMap>
 
+    <resultMap id="DemandDetail" type="Demand">
+        <id  property="gId" column="g_id"/>
+        <result property="curTime" column="cur_time"/>
+        <result property="orderUId" column="order_u_id"/>
+    </resultMap>
+
     <select id="getList" resultMap="MyDemand">
         select d.g_id,d.weight,d.num,d.price,d.origin,d.target,d.cur_time,d.state from demand d where d.state='non';
     </select>
 
+    <select id="getDetail" resultMap="DemandDetail">
+        select d.g_id,d.weight,d.num,d.price,d.origin,d.target,d.order_u_id,d.cur_time,d.between from demand d where d.g_id=#{gId};
+    </select>
+
+    <update id="getDemand">
+        update demand d set d.rec_u_id=#{uId},d.state='sending' where d.g_id=#{gId};
+    </update>
 
 
 </mapper>
