@@ -24,6 +24,21 @@
     <update id="getDemand">
         update demand d set d.rec_u_id=#{uId},d.state='sending' where d.g_id=#{gId};
     </update>
+    
+    <insert id="addDemand">
+        insert into demand(order_u_id,weight,num,price,origin,target,state,cur_time,track_num,etc) values(
+        #{demand.orderUId},
+        #{demand.weight},
+        #{demand.num},
+        #{demand.price},
+        #{demand.origin},
+        #{demand.target},
+        #{demand.state},
+        #{demand.curTime},
+        #{demand.trackNum},
+        #{demand.etc}
+        );
+    </insert>
 
 
 </mapper>

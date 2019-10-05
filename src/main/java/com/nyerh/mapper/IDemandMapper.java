@@ -12,4 +12,6 @@ public interface IDemandMapper {
     Demand getDetail(@Param("gId") Integer gid);
     //接单（改变订单的rec_u_id为当前用户，当前订单状态state改为sending派送中）
     Integer getDemand(@Param("gId") Integer gid,@Param("uId") Integer uid);
+    //下单（创建新订单）
+    Integer addDemand(@Param("demand") Demand demand);
 }

@@ -25,7 +25,8 @@
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
     <script type="text/javascript">
 
-        function getQueryString(id) {
+        function getQueryString(id)
+        {
             var reg = new RegExp("(^|&)" + id + "=([^&]*)(&|$)", "i");
             var r = window.location.search.substr(1).match(reg);
             if (r != null)

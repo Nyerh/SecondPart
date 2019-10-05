@@ -28,4 +28,9 @@ public class DemandServImpl implements DemandService {
     public Integer getDemand(Integer gid, Integer uid) {
         return idm.getDemand(gid, uid);
     }
+
+    @Override
+    public Integer addDemand(Demand demand) {
+        return idm.addDemand(demand);
+    }
 }

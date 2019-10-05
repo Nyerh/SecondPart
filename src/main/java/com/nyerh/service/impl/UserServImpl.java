@@ -21,4 +21,9 @@ public class UserServImpl implements UserService {
     public Integer getDetection(Integer uid) {
         return ium.getDetection(uid);
     }
+
+    @Override
+    public Integer addCurRec(Integer uid) {
+        return ium.addCurRec(uid);
+    }
 }

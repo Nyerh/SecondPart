@@ -11,5 +11,9 @@
         select detection from user u where u.u_id=#{uId};
     </select>
 
+    <update id="addCurRec">
+        update user u set u.cur_rec=u.cur_rec+1 where u.u_id=#{uId};
+    </update>
+
 
 </mapper>

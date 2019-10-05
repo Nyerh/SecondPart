@@ -23,8 +23,102 @@
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
     <!--5.中文校验-->
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").click(function ()
+            {
+                var weight = $("#weight").val().trim();
+                var num = $("#num").val().trim();
+                var origin = $("#origin").val().trim();
+                var target = $("#target").val().trim();
+                var trackNum = $("#trackNum").val().trim();
+                var price = $("#price").val().trim();
+                var etc = $("#etc").val().trim();
+                var data={
+                    weight:weight,
+                    num:num,
+                    origin:origin,
+                    target:target,
+                    trackNum:trackNum,
+                    price:price,
+                    etc:etc
+                };
+                $.ajax({
+                    url: "http://localhost:8080/SecondPart/DemandController/order",
+                    data:JSON.stringify(data),
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json;charset-UTF-8",
+                    success:function (data1) {
+                        if(data1==3)
+                        {
+                            alert("未实名制")
+                            /*location.href="";*/
+                        }
+                        else if(data1==0)
+                        {
+                            alert("下单失败,请重试")
+                        }
+                        else
+                        {
+                            alert("下单成功");
+                            location.href="Show.html";
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
+<div class="container">
+    <div class="page-header">
+        <h1>填写订单信息</h1>
+    </div>
 
+    <label for="basic-addon1">输入重量</label>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="重量" aria-describedby="basic-addon2" id="weight">
+        <span class="input-group-addon" id="basic-addon1">kg</span>
+    </div>
+
+    <label for="basic-addon2">输入数量</label>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="数量" aria-describedby="basic-addon2" id="num">
+        <span class="input-group-addon" id="basic-addon2">件数</span>
+    </div>
+
+    <label for="basic-addon3">存放位置</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">快递代存点或代存箱</span>
+        <input type="text" class="form-control" placeholder="存放位置" aria-describedby="basic-addon2" id="origin">
+    </div>
+
+    <label for="basic-addon4">目的地</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon4">个人收件位置</span>
+        <input type="text" class="form-control" placeholder="目的地" aria-describedby="basic-addon2" id="target">
+    </div>
+
+    <label for="basic-addon5">订单号</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5">需要领取的快递单号</span>
+        <input type="text" class="form-control" placeholder="单号" aria-describedby="basic-addon2" id="trackNum">
+    </div>
+
+    <label for="basic-addon6">出价</label>
+    <div class="input-group">
+        <input type="text" class="form-control"aria-describedby="basic-addon2" id="price">
+        <span class="input-group-addon" id="basic-addon6">元</span>
+    </div>
+
+    <label for="basic-addon7">备注</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon7">备注信息</span>
+        <input type="text" class="form-control" aria-describedby="basic-addon2" id="etc">
+    </div>
+
+        <button class="btn btn-group" id="btn1">下单</button>
+</div>
 </body>
 </html>

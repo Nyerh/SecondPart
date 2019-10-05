@@ -11,4 +11,6 @@ public interface DemandService {
     Demand getDetail(Integer gId);
     //接单
     Integer getDemand(Integer gid,Integer uid);
+    //下单
+    Integer addDemand(Demand demand);
 }
