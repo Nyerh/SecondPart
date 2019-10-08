@@ -18,5 +18,4 @@ public class User {
     private Integer allRec;
     private Integer allOrder;
     private Integer detection;
-
 }

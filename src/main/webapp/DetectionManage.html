@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Detail</title>
+    <title>Order</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
@@ -27,62 +27,53 @@
         $(function ()
         {
             debugger;
-            var id = window.location.href.split("=")[1];
-            var gid = JSON.stringify(id);
             $.ajax
             ({
-                url: "http://localhost:8080/SecondPart/DemandController/detail",
-                data:gid,
+                url: "http://localhost:8080/SecondPart/ManagerController/showUserD2",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json;charset-UTF-8",
                 success:function (data)
                 {
                     var str="";
-                        var gId=data.gId;
-                        var weight=data.weight;
-                        var num=data.num;
-                        var price=data.price;
-                        var origin=data.origin;
-                        var target=data.target;
-                        var orderUId=data.orderUId;
-                        var curTime=data.curTime;
-                        var between=data.between;
-                        str = "<tr><td>" + gId + "</td><td>" + weight + "</td><td>" + num + "</td><td>" +price+
-                            "</td><td>"+origin+"</td><td>"+target+"</td><td>"+orderUId+"</td><td>"+curTime+
-                            "</td><td>"+between+"</td><td><button class='btn' id='btn1' onclick='A()'>接单</button></td></tr>";
+                    for(var i=0;i<data.length;i++)
+                    {
+                        var uId=data[i].uId;
+                        var idCard=data[i].idCard;
+                        var uName=data[i].uName;
+                        var phone=data[i].phone;
+                        var address=data[i].address;
+                        var detection=data[i].detection;
+                        if(detection==2)
+                        {
+                            var dec="审核中";
+                        }
+                        str = "<tr><td>" + uId + "</td><td>" +idCard+ "</td><td>"+uName+"</td><td>"+phone+
+                            "</td><td>"+address+ "</td><td>"+dec+
+                            "</td><td><button class='btn' id='btn"+i+"' onclick='A("+uId+")'>审核</button></td></tr>";
                         $("#tbd1").append(str);
                     }
+                }
             })
         });
-        function A()
-        {
-            var id = window.location.href.split("=")[1];
-            var gid = JSON.stringify(id);
+        function A(uId) {
             debugger;
-            $.ajax
-            ({
-                url: "http://localhost:8080/SecondPart/DemandController/getDemand",
-                data:gid,
+            var uid = JSON.stringify(uId);
+            $.ajax({
+                url: "http://localhost:8080/SecondPart/ManagerController/detecUser",
+                data:uid,
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json;charset-UTF-8",
-                success:function (data) {
-                    if(data==0)
+                success:function (data)
+                {
+                    if(data==1)
                     {
-                        alert("失败");
+                        location.href="DetectionManage.html";
                     }
-                    else if(data==1)
+                    else
                     {
-                        alert("成功");
-                    }
-                    else if(data==2)
-                    {
-                        alert("同时接单过多")
-                    }
-                    else if(data==3)
-                    {
-                        alert("未实名制")
+                        alert("审核失败");
                     }
                 }
             })
@@ -94,15 +85,12 @@
     <table id="tb1" class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
-            <th>订单号</th>
-            <th>重量</th>
-            <th>数量</th>
-            <th>报价</th>
-            <th>存放点</th>
-            <th>目的地</th>
-            <th>下单人</th>
-            <th>下单时间</th>
-            <th>里程数</th>
+            <th>用户id</th>
+            <th>身份证号</th>
+            <th>真实姓名</th>
+            <th>手机号</th>
+            <th>地址</th>
+            <th>实名制状态</th>
             <th>操作</th>
         </tr>
         </thead>
