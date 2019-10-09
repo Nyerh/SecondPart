@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Show</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!--2.验证规则样式-->
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+    <!--3.jquery 插件-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!--4.核心验证文件-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+    <!--5.中文校验-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").click(function ()
+            {
+                var username = $("#username").val().trim();
+                var password = $("#password").val().trim();
+                var uName = $("#uName").val().trim();
+                var idCard = $("#idCard").val().trim();
+                var sex = $("#sex").val().trim();
+                var phone = $("#phone").val().trim();
+                var address = $("#address").val().trim();
+                var data={
+                    username:username,
+                    password:password,
+                    uName:uName,
+                    idCard:idCard,
+                    sex:sex,
+                    phone:phone,
+                    address:address
+                };
+                $.ajax({
+                    url: "http://localhost:8080/SecondPart/UserLoginController/Register",
+                    data:JSON.stringify(data),
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json;charset-UTF-8",
+                    success:function (data1)
+                    {
+                        if(data1==1)
+                        {
+                            location.href="Login.html";
+                        }
+                        else
+                        {
+                            alert("注册失败");
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>用户注册</h1>
+    </div>
+
+    <label for="basic-addon1">用户名</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">username</span>
+        <input type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon2" id="username">
+
+    </div>
+
+    <label for="basic-addon2">密码</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon2">password</span>
+        <input type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon2" id="password">
+    </div>
+
+    <label for="basic-addon3">姓名</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">（非必填项）</span>
+        <input type="text" class="form-control" placeholder="姓名" aria-describedby="basic-addon2" id="uName">
+    </div>
+
+    <label for="basic-addon4">身份证</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon4">（非必填项）</span>
+        <input type="text" class="form-control" placeholder="身份证号" aria-describedby="basic-addon2" id="idCard">
+    </div>
+
+    <label for="basic-addon5">性别</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5">（非必填项）</span>
+        <input type="text" class="form-control" placeholder="单号" aria-describedby="basic-addon2" id="sex">
+    </div>
+
+    <label for="basic-addon6">手机号</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon6">（非必填项）</span>
+        <input type="text" class="form-control" placeholder="手机号" aria-describedby="basic-addon2" id="phone">
+
+    </div>
+
+    <label for="basic-addon7">住址</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon7">（非必填项）</span>
+        <input type="text" class="form-control" placeholder="住址" aria-describedby="basic-addon2" id="address">
+    </div>
+
+    <button class="btn btn-group" id="btn1">注册</button>
+</div>
+</body>
+</html>
