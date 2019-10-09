@@ -18,6 +18,7 @@
                 url:"ShowController/orderRecord",
                 dateType:"json",
                 success:function (data) {
+                    debugger;
                     $(data).each(function () {
                         $("tfoot:eq(0)").append(
                             "<tr>" +

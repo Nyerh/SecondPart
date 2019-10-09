@@ -50,8 +50,8 @@ public class DemandController {
     {
         int gId = Integer.parseInt(gid);
         //获取当前用户uid
-        /*Integer uid = (Integer) req.getSession().getAttribute("uid");*/
-        Integer uid=1;
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+/*        Integer uid=1;*/
         Integer curRec = userService.getCurRec(uid);
         if(curRec>=3)
         {
@@ -75,8 +75,7 @@ public class DemandController {
     public Integer order(@RequestBody Demand demand, HttpServletRequest req)
     {
         //获取当前用户uid
-        /*Integer uid = (Integer) req.getSession().getAttribute("uid");*/
-        Integer uid=1;
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
         demand.setOrderUId(uid);
         demand.setState("non");
         Date date = new Date();

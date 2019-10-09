@@ -38,7 +38,7 @@
                 contentType: "application/json;charset-UTF-8",
                 success:function (data)
                 {
-                    var str="";
+                        var str="";
                         var gId=data.gId;
                         var weight=data.weight;
                         var num=data.num;
@@ -52,7 +52,7 @@
                             "</td><td>"+origin+"</td><td>"+target+"</td><td>"+orderUId+"</td><td>"+curTime+
                             "</td><td>"+between+"</td><td><button class='btn' id='btn1' onclick='A()'>接单</button></td></tr>";
                         $("#tbd1").append(str);
-                    }
+                }
             })
         });
         function A()

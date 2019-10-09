@@ -22,8 +22,7 @@ public class ShowController {
     //个人信息展示
     @RequestMapping(value = "show",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public User show(HttpServletRequest request){
-        request.getSession().setAttribute("uId",1);
-        Integer uId = (Integer)request.getSession().getAttribute("uId");
+        Integer uId = (Integer)request.getSession().getAttribute("uid");
 
         User user = showUserImpl.showUser(uId);
 
@@ -32,9 +31,7 @@ public class ShowController {
     //历史需求展示
     @RequestMapping(value = "pastDemand",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Demand> pastDemand(HttpServletRequest request){
-        request.getSession().setAttribute("uId",1);
-
-        Integer uId = (Integer)request.getSession().getAttribute("uId");
+        Integer uId = (Integer)request.getSession().getAttribute("uid");
 
         List<Demand> demands = showUserImpl.pastDemand(uId);
 
@@ -44,9 +41,7 @@ public class ShowController {
     //接单历史记录
     @RequestMapping(value = "orderRecord",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Demand> orderRecord(HttpServletRequest request){
-        request.getSession().setAttribute("uId",2);
-
-        Integer uId = (Integer)request.getSession().getAttribute("uId");
+        Integer uId = (Integer)request.getSession().getAttribute("uid");
 
         List<Demand> demands = showUserImpl.orderRecord(uId);
 
