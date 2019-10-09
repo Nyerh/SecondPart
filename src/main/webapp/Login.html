@@ -43,13 +43,13 @@
                     contentType: "application/json;charset-UTF-8",
                     success:function (data1)
                     {
-                        if(data1==1)
+                        if(data1!=0)
                         {
                             location.href="index.html";
                         }
                         else
                         {
-                            alert("登陆失败")
+                            alert("登陆失败");
                         }
                     }
                 })
@@ -67,7 +67,7 @@
                             message:"不符合规范",
                             validators:{//列出校验规则
                                 notEmpty:{//非空校验
-                                    message:'初始状态不为空'
+                                    message:'用户名不为空'
                                 }
                             }
                         },
@@ -75,15 +75,13 @@
                             message:"不符合规范",
                             validators:{//列出校验规则
                                 notEmpty:{//非空校验
-                                    message:'初始状态不为空'
+                                    message:'密码不为空'
                                 }
                             }
                         }
                     }
             });
-
         });
-
     </script>
 </head>
 <body>

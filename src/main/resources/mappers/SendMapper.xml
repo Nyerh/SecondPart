@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nyerh.mapper.ISendMapper">
+<resultMap id="ShowSend" type="Send">
+    <id property="sId" column="s_id"/>
+    <result property="sendPhone" column="send_phone"/>
+    <result property="sendAdd" column="send_add"/>
+    <result property="recPhone" column="rec_phone"/>
+    <result property="recAdd" column="rec_add"/>
+</resultMap>
+
+
+    <select id="showSend" resultMap="ShowSend">
+        select s.s_id,s.sender,s.send_phone,s.send_add,s.receiver,s.rec_phone,s.rec_add from send s where s.s_id = #{sid};
+    </select>
+</mapper>

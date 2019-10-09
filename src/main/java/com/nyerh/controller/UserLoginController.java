@@ -21,7 +21,11 @@ public class UserLoginController {
     public Integer Login(@RequestBody User user, HttpSession httpSession)
     {
         Integer uid = userService.userLogin(user);
-        if(uid!=null)
+        if (uid==null)
+        {
+            uid=0;
+        }
+        if(uid!=0)
         {
             httpSession.setAttribute("uid",uid);
         }
@@ -32,6 +36,7 @@ public class UserLoginController {
     {
         String idCard = user.getIdCard();
         String uName = user.getUName();
+        System.out.println(user);
         if(idCard==null||uName==null)
         {
             user.setDetection(1);//未填写实名制信息

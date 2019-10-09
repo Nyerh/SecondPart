@@ -16,6 +16,8 @@ public interface UserService {
     Integer userLogin(User user);
     //用户注册
     Integer userRegister(User user);
+
+
     //修改时获取当前用户信息
     List<User> getUserById(Integer id);
     //修改保存更新用户信息

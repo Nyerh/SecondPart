@@ -24,7 +24,7 @@
         <result property="trackNum" column="track_num"/>
     </resultMap>
     <select id="pastDemand" resultMap="pastDemand">
-        select * from demand where order_u_id=#{uId};
+        select * from demand where order_u_id=#{uId} and state='completed';
     </select>
 
     <!--接单记录显示-->
