@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Order</title>
+    <title>Manager</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
@@ -36,12 +36,62 @@
             });
         })
     </script>
+
+    <style type="text/css">
+        .banner {
+            background: url(plugins/Order/img/banner.jpg) no-repeat center;
+            background-size: cover;
+            position: relative;
+            height: 48vw;
+            margin-bottom: 7em;
+        }
+        .choose {
+            bottom: -15%;
+            width: 75%;
+            left: 0;
+            margin: 0 auto;
+            right: 0;
+            background: #fff;
+        }
+        .choose-icon span.fa {
+            font-size: 40px;
+            color: rgba(0, 188, 212, .5);
+        }
+        .choose-icon:hover  {
+            transform: scale(1.1);
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            -o-transition: 0.5s all;
+        }
+        .choose-grid{
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 32px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <button id="b1" class="btn btn-default" >订单管理</button>
-    <button id="b2" class="btn btn-default" >用户实名制管理</button>
-    <button id="b3" class="btn btn-default" >用户管理</button>
-</div>
+<section class="banner position-relative">
+    <div class="container">
+        <div class="choose text-center position-absolute d-lg-flex">
+            <div class="choose-icon col-md-4">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b1" class="choose-grid" >订单管理</a>
+            </div>
+            <div class="choose-icon col-md-4">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b2" class="choose-grid" >用户实名制管理</a>
+            </div>
+            <div class="choose-icon col-md-4">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b3" class="choose-grid" >用户管理</a>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

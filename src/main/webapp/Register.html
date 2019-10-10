@@ -23,6 +23,10 @@
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
     <!--5.中文校验-->
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <link rel="stylesheet" href="plugins/Login/css/loginstyle.css" type="text/css" media="all">
+    <!-- easy-responsive-tabs css -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/Login/css/logincreditly.css" type="text/css" media="all" />
     <script type="text/javascript">
         $(function () {
             $("#btn1").click(function ()
@@ -66,56 +70,79 @@
     </script>
 </head>
 <body>
-<div class="container">
-    <div class="page-header">
-        <h1>用户注册</h1>
+<h1 class="title-agile text-center">用户注册</h1>
+<div class="w3ls-main">
+    <!--/tabs-->
+    <div class="responsive_tabs w3ls_tab">
+        <div class="agile_pay">
+            <div class="resp-tabs-container">
+                <form action="#" method="post" class="creditly-card-form shopf-sear-headinfo_form">
+                    <section class="creditly-wrapper payf_wrapper">
+                        <div class="credit-card-wrapper">
+                            <div class="first-row form-group">
+                                <div class="paymntf_card_number_grids">
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="fpay_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">用户名</label>
+                                            <input class="number credit-card-number form-control" type="text" name="number" id="username" inputmode="numeric" autocomplete="cc-number"
+                                                   autocompletetype="cc-number" x-autocompletetype="cc-number" >
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_right">
+                                        <div class="controls">
+                                            <label class="control-label">密码</label>
+                                            <input class="security-code form-control" Â· inputmode="numeric" type="text" name="security-code" id="password">
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">姓名</label>
+                                            <input class="number credit-card-number form-control" type="text" name="number" id="uName" placeholder="非必填项" inputmode="numeric" autocomplete="cc-number"
+                                                   autocompletetype="cc-number" x-autocompletetype="cc-number" >
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_right">
+                                        <div class="controls">
+                                            <label class="control-label">身份证</label>
+                                            <input class="security-code form-control" Â· inputmode="numeric" type="text" name="security-code" id="idCard" placeholder="非必填项">
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">性别</label>
+                                            <input class="number credit-card-number form-control" type="text" name="number" id="sex" placeholder="非必填项" inputmode="numeric" autocomplete="cc-number"
+                                                   autocompletetype="cc-number" x-autocompletetype="cc-number" >
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_right">
+                                        <div class="controls">
+                                            <label class="control-label">手机号</label>
+                                            <input class="security-code form-control" Â· inputmode="numeric" type="text" name="security-code" id="phone" placeholder="非必填项">
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">住址</label>
+                                            <input class="number credit-card-number form-control" type="text" name="number" placeholder="非必填项" id="address" inputmode="numeric" autocomplete="cc-number"
+                                                   autocompletetype="cc-number" x-autocompletetype="cc-number" >
+                                        </div>
+                                    </div>
+                                    <div class="clear"> </div>
+                                </div>
+                            </div>
+                            <button class="submit" id="btn">
+                                <span>注册 </span>
+                            </button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
     </div>
+    <!--//tabs-->
+</div>
 
-    <label for="basic-addon1">用户名</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">username</span>
-        <input type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon2" id="username">
-
-    </div>
-
-    <label for="basic-addon2">密码</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon2">password</span>
-        <input type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon2" id="password">
-    </div>
-
-    <label for="basic-addon3">姓名</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon3">（非必填项）</span>
-        <input type="text" class="form-control" placeholder="姓名" aria-describedby="basic-addon2" id="uName">
-    </div>
-
-    <label for="basic-addon4">身份证</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon4">（非必填项）</span>
-        <input type="text" class="form-control" placeholder="身份证号" aria-describedby="basic-addon2" id="idCard">
-    </div>
-
-    <label for="basic-addon5">性别</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon5">（非必填项）</span>
-        <input type="text" class="form-control" placeholder="单号" aria-describedby="basic-addon2" id="sex">
-    </div>
-
-    <label for="basic-addon6">手机号</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon6">（非必填项）</span>
-        <input type="text" class="form-control" placeholder="手机号" aria-describedby="basic-addon2" id="phone">
-
-    </div>
-
-    <label for="basic-addon7">住址</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon7">（非必填项）</span>
-        <input type="text" class="form-control" placeholder="住址" aria-describedby="basic-addon2" id="address">
-    </div>
-
-    <button class="btn btn-group" id="btn1">注册</button>
 </div>
 </body>
 </html>

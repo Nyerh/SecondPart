@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Order</title>
+    <title>ManaLogin</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
@@ -23,6 +23,10 @@
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
     <!--5.中文校验-->
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <link rel="stylesheet" href="plugins/Login/css/loginstyle.css" type="text/css" media="all">
+    <!-- easy-responsive-tabs css -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/Login/css/logincreditly.css" type="text/css" media="all" />
     <script type="text/javascript">
         $(function () {
             $("#btn").click(function () {
@@ -51,53 +55,50 @@
                     }
                 })
             });
-            $("#form1").bootstrapValidator({
-                message:"",
-                feedbackIcons:{
-                    valid:'glyphicon glyphicon-ok',
-                    invalid:'glyphicon glyphicon-remove',
-                    validating:'glyphicon glyphicon-refresh'
-                },
-                fields:
-                    {
-                        username:{
-                            message:"不符合规范",
-                            validators:{//列出校验规则
-                                notEmpty:{//非空校验
-                                    message:'初始状态不为空'
-                                }
-                            }
-                        },
-                        password:{
-                            message:"不符合规范",
-                            validators:{//列出校验规则
-                                notEmpty:{//非空校验
-                                    message:'初始状态不为空'
-                                }
-                            }
-                        }
-                 }
-            })
         })
     </script>
 </head>
 <body>
-<div class="page-header container">
-    <h1>管理员登录</h1>
+<h1 class="title-agile text-center">管理员登录</h1>
+<div class="w3ls-main">
+    <!--/tabs-->
+    <div class="responsive_tabs w3ls_tab">
+        <div class="agile_pay">
+            <div class="resp-tabs-container">
+                <form action="#" method="post" class="creditly-card-form shopf-sear-headinfo_form">
+                    <section class="creditly-wrapper payf_wrapper">
+                        <div class="credit-card-wrapper">
+                            <div class="first-row form-group">
+                                <div class="paymntf_card_number_grids">
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="fpay_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">用户名</label>
+                                            <input class="number credit-card-number form-control" type="text" name="number" id="username" inputmode="numeric" autocomplete="cc-number"
+                                                   autocompletetype="cc-number" x-autocompletetype="cc-number" >
+                                        </div>
+                                    </div>
+                                    <div class="fpay_card_number_grid_right">
+                                        <div class="controls">
+                                            <label class="control-label">密码</label>
+                                            <input class="security-code form-control" Â· inputmode="numeric" type="text" name="security-code" id="password">
+                                        </div>
+                                    </div>
+                                    <div class="clear"> </div>
+                                </div>
+                            </div>
+                            <button class="btn" id="btn">
+                                <span>登录 </span>
+                            </button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--//tabs-->
 </div>
-<div class="container">
-    <form id="form1">
 
-        <div class="form-group">
-            <label>用户名</label>
-            <input class="form-control" type="text" id="username" name="username">
-        </div>
-        <div class="form-group">
-            <label>密码</label>
-            <input class="form-control" type="password" id="password" name="password">
-        </div>
-        <input class="btn " value="登录" id="btn">
-    </form>
 </div>
 
 </body>

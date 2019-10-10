@@ -9,6 +9,7 @@
     <title>Order</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugins/Order/css/style.css" type="text/css" rel="stylesheet" media="all">
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -25,6 +26,21 @@
     <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
     <script type="text/javascript">
         $(function () {
+            $("#b1").click(function () {
+                location.href="UserShow.html";
+            });
+            $("#b2").click(function () {
+                location.href="PastDemand.html";
+            });
+            $("#b3").click(function () {
+                location.href="querySend.html";
+            });
+            $("#b4").click(function () {
+                location.href="Order.html";
+            });
+            $("#b5").click(function () {
+                location.href="Show.html";
+            });
             $("#btn1").click(function ()
             {
                 var weight = $("#weight").val().trim();
@@ -53,7 +69,7 @@
                         if(data1==3)
                         {
                             alert("未实名制")
-                            /*location.href="";*/
+                            location.href="Update.html";
                         }
                         else if(data1==0)
                         {
@@ -69,56 +85,188 @@
             })
         })
     </script>
+
+    <style type="text/css">
+        .banner{
+            background: url(plugins/Order/img/banner1.jpg) no-repeat 0px 0px;
+            background-size: cover;
+            padding: 2em 0;
+        }
+        .choose {
+            bottom: -15%;
+            width: 75%;
+            left: 0;
+            margin: 0 auto;
+            right: 0;
+            background: #fff;
+        }
+        .choose-icon span.fa {
+            font-size: 40px;
+            color: rgba(0, 188, 212, .5);
+        }
+        .choose-icon:hover  {
+            transform: scale(1.1);
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            -o-transition: 0.5s all;
+        }
+        .choose-grid{
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 32px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="page-header">
-        <h1>填写订单信息</h1>
-    </div>
 
-    <label for="basic-addon1">输入重量</label>
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="重量" aria-describedby="basic-addon2" id="weight">
-        <span class="input-group-addon" id="basic-addon1">kg</span>
+<div class="header">
+    <div class="container">
+        <div class="choose text-center position-absolute d-lg-flex">
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b1" class="choose-grid" >个人信息</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b2" class="choose-grid" >历史下单记录</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b3" class="choose-grid" >快递查询</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b4" class="choose-grid" >发布需求</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b5" class="choose-grid" >我要接单</a>
+            </div>
+        </div>
     </div>
+</div>
+<div class="banner">
+    <div class="container">
+        <div class="banner-right">
+            <div class="sap_tabs">
+                <div class="page-header">
+                    <h1>填写订单信息</h1>
+                </div>
 
-    <label for="basic-addon2">输入数量</label>
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="数量" aria-describedby="basic-addon2" id="num">
-        <span class="input-group-addon" id="basic-addon2">件数</span>
+                <div style="display: block; width: 100%; margin: 0px;">
+                    <div class="facts">
+                        <div class="online_reservation">
+                            <div class="b_room">
+                                <div class="booking_room">
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>重量</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="weight" placeholder="请输入重量" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <li  class="span1_of_1 left desti">
+                                                <h5>数量</h5>
+                                                <div class="book_date">
+                                                    <form>
+                                                        <input type="text" id="num" placeholder="请输入数量" class="typeahead1 input-md form-control tt-input" required="">
+                                                    </form>
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>存放位置</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="origin" placeholder="快递代存点或代存箱" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <li  class="span1_of_1 left desti">
+                                                <h5>目的地</h5>
+                                                <div class="book_date">
+                                                    <form>
+                                                        <input type="text" id="target" placeholder="个人收件位置" class="typeahead1 input-md form-control tt-input" required="">
+                                                    </form>
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>订单号</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="trackNum" placeholder="需要领取的快递单号" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <li  class="span1_of_1 left desti">
+                                                <h5>备注</h5>
+                                                <div class="book_date">
+                                                    <form>
+                                                        <input type="text" id="etc" placeholder="备注信息" class="typeahead1 input-md form-control tt-input" required="">
+                                                    </form>
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="reservation">
+                                        <li class="span1_of_1 left adult">
+                                            <h5>出价</h5>
+                                            <!----------start section_room----------->
+                                            <div class="section_room">
+                                                <select id="price" onChange="change_country(this.value)" class="frm-field required">
+                                                    <option value="null">1元</option>
+                                                    <option value="null">2元</option>
+                                                    <option value="AX">3元</option>
+                                                    <option value="AX">4元</option>
+                                                    <option value="AX">5元</option>
+                                                    <option value="AX">6元</option>
+                                                    <option value="AX">7元</option>
+                                                    <option value="AX">8元</option>
+                                                    <option value="AX">9元</option>
+                                                    <option value="AX">10元</option>
+                                                    <option value="AX">11元</option>
+                                                    <option value="AX">12元</option>
+                                                    <option value="AX">13元</option>
+                                                    <option value="AX">14元</option>
+                                                    <option value="AX">15元</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                    </div>
+
+                                    <div class="reservation">
+                                        <ul>
+                                            <li class="span1_of_3">
+                                                <div class="date_btn">
+                                                    <form>
+                                                        <input type="button" id="btn1" value="下单" />
+                                                    </form>
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <!---->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <label for="basic-addon3">存放位置</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon3">快递代存点或代存箱</span>
-        <input type="text" class="form-control" placeholder="存放位置" aria-describedby="basic-addon2" id="origin">
-    </div>
-
-    <label for="basic-addon4">目的地</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon4">个人收件位置</span>
-        <input type="text" class="form-control" placeholder="目的地" aria-describedby="basic-addon2" id="target">
-    </div>
-
-    <label for="basic-addon5">订单号</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon5">需要领取的快递单号</span>
-        <input type="text" class="form-control" placeholder="单号" aria-describedby="basic-addon2" id="trackNum">
-    </div>
-
-    <label for="basic-addon6">出价</label>
-    <div class="input-group">
-        <input type="text" class="form-control"aria-describedby="basic-addon2" id="price">
-        <span class="input-group-addon" id="basic-addon6">元</span>
-    </div>
-
-    <label for="basic-addon7">备注</label>
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon7">备注信息</span>
-        <input type="text" class="form-control" aria-describedby="basic-addon2" id="etc">
-    </div>
-
-        <button class="btn btn-group" id="btn1">下单</button>
 </div>
 </body>
 </html>
