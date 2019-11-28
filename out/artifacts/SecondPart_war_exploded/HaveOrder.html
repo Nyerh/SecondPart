@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>已接订单与已发布订单页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--解决乱码问题-->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!-- 引入线上的 Bootstrap 已编译的插件 -->
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/js/bootstrap.js"></script>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.css" rel="stylesheet">
+    <!--1.bootstrap样式，在之前就已经导入，可不需要导入-->
+    <!--2.验证规则样式-->
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+    <!--3.jquery 插件，比之前导入的版本更新，可去掉旧版本-->
+    <!--<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>-->
+    <!--4.核心验证文件-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+    <!--5.中文校验-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //debugger;
+            $.ajax({
+                url: "http://localhost:8080/SecondPart/User/getAllOrder",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    var str = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var gId = data[i].gId;
+                        var orderUId = data[i].orderUId;
+                        var recUId = data[i].recUId;
+                        var weight = data[i].weight;
+                        var num = data[i].num;
+                        var price = data[i].price;
+                        var origin = data[i].origin;
+                        var target = data[i].target;
+                        var state = data[i].state;
+                        var curTime = data[i].curTime;
+                        var trackNum = data[i].trackNum;
+                        var between = data[i].between;
+                        var etc = data[i].etc;
+                        if (state == 'completed') {
+                            $("#confirm").click(function () {
+                                alert("该订单已确认收货")
+                            })
+                        }
+                        str = "<tr>"
+                            + "<td>" + gId + "</td>"
+                            + "<td>" + orderUId + "</td>"
+                            + "<td>" + recUId + "</td>"
+                            + "<td>" + weight + "</td>"
+                            + "<td>" + num + "</td>"
+                            + "<td>" + price + "</td>"
+                            + "<td>" + origin + "</td>"
+                            + "<td>" + target + "</td>"
+                            + "<td>" + state + "</td>"
+                            + "<td>" + curTime + "</td>"
+                            + "<td>" + trackNum + "</td>"
+                            + "<td>" + between + "</td>"
+                            + "<td>" + etc + "</td>"
+                            + "<td><button class='btn' id='confirm' onclick='confirm(" + gId + ")'>确认收货</button></td>"
+                            + "</tr>";
+                        $("#show").append(str)
+                    }
+                }
+            })
+        });
+
+        function confirm(gId) {
+            debugger;
+            $.ajax({
+                url: "http://localhost:8080/SecondPart/User/confirm",
+                data: {
+                    gId: gId
+                },
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json;charset:UTF-8",
+                success: function (count) {
+                    if (count == 0) {
+                        alert("确认收货失败,请重试");
+                    } else if (count == 1) {
+                        alert("确认收货成功");
+                        location.href = 'HaveOrder.html';
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+<table id="show" class="table table-bordered table-hover table-condensed" style="text-align: center">
+    <thead>
+    <tr>
+        <th style="text-align: center">订单号</th>
+        <th style="text-align: center">下单人id</th>
+        <th style="text-align: center">接单人id</th>
+        <th style="text-align: center">重量(kg)</th>
+        <th style="text-align: center">数量(件)</th>
+        <th style="text-align: center">报价(元)</th>
+        <th style="text-align: center">存放点</th>
+        <th style="text-align: center">目的地</th>
+        <th style="text-align: center">订单状态</th>
+        <th style="text-align: center">下单时间</th>
+        <th style="text-align: center">快递单号</th>
+        <th style="text-align: center">配送距离(km)</th>
+        <th style="text-align: center">备注</th>
+        <th style="text-align: center">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+</body>
+</html>

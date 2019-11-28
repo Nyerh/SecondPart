@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Update</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugins/Order/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!--2.验证规则样式-->
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+    <!--3.jquery 插件-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!--4.核心验证文件-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+    <!--5.中文校验-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: "http://localhost:8080/test/User/getUserById",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json;charset:UTF-8",
+                success: function (data) {
+                    debugger;
+                    for (var i = 0; i < data.length; i++) {
+                        var name = data[i].username;
+                        var password = data[i].password;
+                        var id_card = data[i].idCard;
+                        var u_name = data[i].uName;
+                        var phone = data[i].phone;
+                        var sex = data[i].sex;
+                        var address = data[i].address;
+                        if (id_card == null) {
+                            id_card = "未认证";
+                        }
+                        ;
+                        if (u_name == null) {
+                            u_name = "未认证";
+                        }
+                        $("#name").val(name);
+                        $("#password").val(password);
+                        $("#id_card").val(id_card);
+                        $("#u_name").val(u_name);
+                        $("#phone").val(phone);
+                        $("#sex").val(sex);
+                        $("#address").val(address)
+                    }
+                }
+            });
+            $("#b1").click(function () {
+                location.href="UserShow.html";
+            });
+            $("#b2").click(function () {
+                location.href="PastDemand.html";
+            });
+            $("#b3").click(function () {
+                location.href="querySend.html";
+            });
+            $("#b4").click(function () {
+                location.href="Order.html";
+            });
+            $("#b5").click(function () {
+                location.href="Show.html";
+            });
+        });
+        function updateUser() {
+            var name = $("#name").val();
+            var password = $("#password").val();
+            var id_card = $("#id_card").val();
+            var u_name = $("#u_name").val();
+            var phone = $("#phone").val();
+            var sex = $("#sex").val();
+            var address = $("#address").val();
+            var data = {
+                username: name,
+                password: password,
+                idCard: id_card,
+                uName: u_name,
+                phone: phone,
+                sex: sex,
+                address: address,
+            }
+            if (sex == '男' || sex == '女'||sex==null) 
+            {
+                $.ajax({
+                    url: "User/updateUser",
+                    data: data,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json;charset:UTF-8",
+                    success: function (count) {
+                        if (count == 0) {
+                            alert("信息填写有误,修改失败，请重试！");
+                        } else if (count == 1) {
+                            location.href = 'UserShow.html';
+                        }
+                    }
+                })
+            }else 
+            {
+                alert("性别填写有误，请重试！")
+            }
+        }
+    </script>
+    <style type="text/css">
+        .banner{
+            background: url(plugins/Order/img/banner1.jpg) no-repeat 0px 0px;
+            background-size: cover;
+            padding: 2em 0;
+        }
+        .choose {
+            bottom: -15%;
+            width: 75%;
+            left: 0;
+            margin: 0 auto;
+            right: 0;
+            background: #fff;
+        }
+        .choose-icon span.fa {
+            font-size: 40px;
+            color: rgba(0, 188, 212, .5);
+        }
+        .choose-icon:hover  {
+            transform: scale(1.1);
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            -o-transition: 0.5s all;
+        }
+        .choose-grid{
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 32px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="choose text-center position-absolute d-lg-flex">
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b1" class="choose-grid" >个人信息</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b2" class="choose-grid" >历史下单记录</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b3" class="choose-grid" >快递查询</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b4" class="choose-grid" >发布需求</a>
+            </div>
+            <div class="choose-icon col-md-2">
+                <span class="fa fa-ship" aria-hidden="true"></span>
+                <a id="b5" class="choose-grid" >我要接单</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner">
+    <div class="container">
+        <div class="banner-right">
+            <div class="sap_tabs">
+                <div class="page-header">
+                    <h1>个人信息</h1>
+                </div>
+
+                <div style="display: block; width: 100%; margin: 0px;">
+                    <div class="facts">
+                        <div class="online_reservation">
+                            <div class="b_room">
+                                <div class="booking_room">
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>用户名</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="name" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <li  class="span1_of_1 left desti">
+                                                <h5>密码</h5>
+                                                <div class="book_date">
+                                                        <input type="text" id="password" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>身份证号</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="id_card" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <li  class="span1_of_1 left desti">
+                                                <h5>真实姓名</h5>
+                                                <div class="book_date">
+                                                        <input type="text" id="u_name" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>手机号码</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="phone"  class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <li  class="span1_of_1 left desti">
+                                                <h5>性别</h5>
+                                                <div class="book_date">
+                                                        <input type="text" id="sex" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="reservation">
+                                        <ul>
+                                            <li  class="span1_of_1 desti">
+                                                <h5>地址</h5>
+                                                <div class="book_date">
+                                                    <input type="text" id="address" class="typeahead1 input-md form-control tt-input" required="">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="reservation">
+                                        <ul>
+                                            <li class="span1_of_3">
+                                                <div class="date_btn">
+                                                        <input type="button" id="updateUser" value="保存修改" onclick="updateUser()"/>
+                                                </div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <!---->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

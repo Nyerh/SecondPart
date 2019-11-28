@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nyerh.mapper.IUserShow">
+    <!--个人信息展示-->
+    <resultMap id="showUser" type="User">
+        <id property="uId" column="u_id"/>
+        <result property="idCard" column="id_card"/>
+        <result property="uName" column="u_name"/>
+        <result property="curRec" column="cur_rec"/>
+        <result property="allRec" column="all_rec"/>
+        <result property="allOrder" column="all_order"/>
+    </resultMap>
+    <select id="showUser" resultMap="showUser">
+        select * from user where u_id=#{uId};
+    </select>
+
+    <!--历史需求展示-->
+    <resultMap id="pastDemand" type="Demand">
+        <id property="gId" column="g_id"/>
+        <result property="orderUId" column="order_u_id"/>
+        <result property="recUId" column="rec_u_id"/>
+        <result property="curTime" column="cur_time"/>
+        <result property="trackNum" column="track_num"/>
+    </resultMap>
+    <select id="pastDemand" resultMap="pastDemand">
+        select * from demand where order_u_id=#{uId} and state='completed';
+    </select>
+
+    <!--接单记录显示-->
+    <resultMap id="orderRecord" type="Demand">
+        <id property="gId" column="g_id"/>
+        <result property="orderUId" column="order_u_id"/>
+        <result property="recUId" column="rec_u_id"/>
+        <result property="curTime" column="cur_time"/>
+        <result property="trackNum" column="track_num"/>
+    </resultMap>
+    <select id="orderRecord" resultMap="orderRecord">
+        select * from demand where rec_u_id=#{uId};
+    </select>
+
+
+</mapper>

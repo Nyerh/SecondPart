@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Order</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!--2.验证规则样式-->
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+    <!--3.jquery 插件-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!--4.核心验证文件-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+    <!--5.中文校验-->
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function ()
+        {
+            debugger;
+            $.ajax
+            ({
+                url: "http://localhost:8080/SecondPart/ManagerController/showDemand",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json;charset-UTF-8",
+                success:function (data)
+                {
+                    var str="";
+                    for(var i=0;i<data.length;i++)
+                    {
+                        var gId=data[i].gId;
+                        var orderUId=data[i].orderUId;
+                        var recUId=data[i].recUId;
+                        var weight=data[i].weight;
+                        var num=data[i].num;
+                        var price=data[i].price;
+                        var origin=data[i].origin;
+                        var target=data[i].target;
+                        var curTime=data[i].curTime;
+                        var state=data[i].state;
+                        var trackNum=data[i].trackNum;
+                        var between=data[i].between;
+                        var etc=data[i].etc;
+                        str = "<tr><td>" + gId + "</td><td>" + orderUId + "</td><td>" + recUId + "</td><td>" +weight+
+                            "</td><td>"+num+"</td><td>"+price+"</td><td>"+origin+"</td><td>"+target+
+                            "</td><td>"+curTime+"</td><td>"+state+"</td><td>"+trackNum+"</td><td>"+between+"</td><td>"+etc+
+                            "</td><td><button class='btn' id='btn"+i+"' onclick='A("+gId+")'>删除</button></td></tr>";
+                        $("#tbd1").append(str);
+                    }
+                }
+            })
+        });
+        function A(gId) {
+            debugger;
+            var gid = JSON.stringify(gId);
+            $.ajax({
+                url: "http://localhost:8080/SecondPart/ManagerController/delDemand",
+                data:gid,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json;charset-UTF-8",
+                success:function (data)
+                {
+                    if(data==1)
+                    {
+                        location.href="DemandManage.html";
+                    }
+                    else
+                    {
+                        alert("删除错误");
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <table id="tb1" class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>订单号</th>
+            <th>下单人</th>
+            <th>接单人</th>
+            <th>重量</th>
+            <th>数量</th>
+            <th>报价</th>
+            <th>存放点</th>
+            <th>目的地</th>
+            <th>下单时间</th>
+            <th>订单状态</th>
+            <th>取件号</th>
+            <th>里程数</th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbd1">
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
